@@ -1,42 +1,21 @@
+from flask import Flask, render_template,request
+
+app = Flask(__name__)
+numberOfMovies = '0'
+
+
+@app.route('/',methods = ['GET','POST'])
+def form_post():
+    if request.method == 'GET':
+        return render_template("index.html",count = 0)
+    elif request.method == 'POST':
+        numberOfMovies = int(request.form['count'])
+        return render_template('index.html',count = numberOfMovies)
+
+"""    
+@app.route('/')
+def printMovies():
+    return render_template("index.html", count=countOfMovies)
 """
-from flask import Flask
-from imdb import IMDb,IMDbError
-ia = IMDb()
-
-NumberOfEntries = input("How many movies would you like to add ")
-MovieNames = []
-for i in range(int(NumberOfEntries)):
-    MovieNames.append(input("Enter the movie name: "))
-
-ratings = []
-for i in MovieNames:
-    movie = ia.search_movie(i)
-    movie = movie[0].movieID
-    curr_movie = ia.get_movie(movie)
-    ratings.append(curr_movie.data['rating'])
-
-
-def partition(arr, left, right):
-    pivot = arr[right]
-    i = left - 1
-    for j in range(left, right):
-        if arr[j] <= pivot:
-            i += 1
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i+1], arr[right] = arr[right], arr[i+1]
-    return i + 1
-#Using quicksort
-def sort(arr,left,right):
-    if left > right:
-        return
-    p = partition(arr,left,right)
-    sort(arr, left, p-1)
-    sort(arr, p+1, right)
-
-
-
-#if __name__ == '__main__':
-    sort(ratings, 0, len(ratings)-1)
-    print(ratings)
-"""
-
+if __name__ == "__main__":
+    app.run(debug=True)
