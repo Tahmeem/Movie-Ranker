@@ -1,4 +1,43 @@
-.Main_header {
-    color:darkslateblue;
+a.Login{
+    position: absolute;
+    left:90%;
+    border: 1px ridge lightslategrey;
+}
+a.Login:hover{
+    background-color:blue;
+}
+
+a.Sign-in {
+    position: absolute;
+    left:94%;
+    border: 1px ridge lightslategrey
+}
+
+a.Sign-in:hover{
+    background-color:blue;
+}
+
+.main-header{
+    text-decoration-color: white;
+}
+.second-header{
+    text-decoration-color: white;
+}
+
+.card-styling{
+    position: relative;
+    margin: auto;
+}
+
+.input-style{
+    position: relative;
+    margin-left:30%;
+}
+.input-style::placeholder{
     text-align: center;
 }
+.btn-styling{
+    position: relative;
+    margin-left:43%;
+}
+
