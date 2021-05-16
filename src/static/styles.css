@@ -4,7 +4,7 @@ a.Login{
     border: 1px ridge lightslategrey;
 }
 a.Login:hover{
-    background-color:blue;
+    background-color:#99bbff;
 }
 
 a.Sign-in {
@@ -14,7 +14,7 @@ a.Sign-in {
 }
 
 a.Sign-in:hover{
-    background-color:blue;
+    background-color:#99bbff;
 }
 
 .main-header{
@@ -36,8 +36,14 @@ a.Sign-in:hover{
 .input-style::placeholder{
     text-align: center;
 }
-.btn-styling{
-    position: relative;
+
+.btn-styling1,.btn-styling2{
+    display: inline-block;
+    width:100px;
     margin-left:43%;
 }
 
+.movie-names{
+    position:relative;
+    margin-left:45%;
+}
