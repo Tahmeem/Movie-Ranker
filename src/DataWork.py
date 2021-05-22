@@ -7,14 +7,25 @@ MovieNames = []
 for i in range(int(NumberOfEntries)):
     MovieNames.append(input("Enter the movie name: "))
 
-ratings = []
-movieDict = {}
-for i in MovieNames:
-    movie = ia.search_movie(i)
-    movie = movie[0].movieID
-    curr_movie = ia.get_movie(movie)
-    movieDict[i] = curr_movie.data['rating']
-    ratings.append(curr_movie.data['rating'])
+def storeData(MovieNames):
+    ratings = []
+    movieDict = {}
+    for i in MovieNames:
+        movie = ia.search_movie(i)
+        movie = movie[0].movieID
+        curr_movie = ia.get_movie(movie)
+        movieDict[i] = curr_movie.data['rating']
+        ratings.append(curr_movie.data['rating'])
+    return ratings,movieDict
+
+def printOrder(ratings, movieDict):
+    ratings.reverse()
+    sortRanking(ratings, 0, len(ratings)-1)
+    print("Movie Rating")
+    for rating in ratings:
+        for movieName in movieDict:
+            if movieDict[movieName] == rating:
+                print(f"{movieName} {rating}")
 
 
 def partition(arr, left, right):
@@ -35,14 +46,5 @@ def sortRanking(arr,left,right):
     sortRanking(arr, left, p-1)
     sortRanking(arr, p+1, right)
 
-def printOrder():
-    ratings.reverse()
-    sortRanking(ratings, 0, len(ratings)-1)
-    for rating in ratings:
-        for movieName in movieDict:
-            if movieDict[movieName] == rating:
-                print(f"Movie: {movieName} Rating: {rating}")
-
-
-
-printOrder()
+if __name__ == "__main__":
+    printOrder()
