@@ -6,10 +6,10 @@ app = Flask(__name__)
 def form_post():
     moviePresent = 0
     if request.method == 'GET':
-        return render_template('index.html', movies = moviePresent)
+        return render_template('index.html', movies=moviePresent, titles="No Movies")
     elif request.method == 'POST':
-        movieTitles = request.form.get('Names')
-        print(movieTitles)
+        movieTitles = request.form.getlist('movieName')
+        print(type(movieTitles))
         moviePresent += 1
         print(moviePresent)
         return render_template('index.html', movies=moviePresent, titles=movieTitles)
