@@ -55,16 +55,37 @@
 
       <div class="card-body card-styling">
         <h5 class="card-title">Enter the movies you want to get ranked</h5>
-        <form method = "POST">
-            <input class = "input-style" type="text" name="count" placeholder="Enter movie title"><br><br>
+        <form method = "POST" id = 'main-form'>
+            <input class = "input-style" id = "movieName" type="text" name="movieName" placeholder="Enter movie title"><br><br>
+            <div id="newElementId"></div>
             <div class = "btn-container">
-                <button type = "submit" value = "added title" name = "add" class = "btn btn-dark btn-styling1">Add</button>
-                <button type="submit" value = "submitted" name = "submit" class="btn btn-dark btn-styling2">Submit</button>
+                <button type = "button" onclick="addInputField()" name = "add" class = "btn btn-dark btn-styling1">Add</button>
+                <button type="submit" name = "submit" class="btn btn-dark btn-styling2">Submit</button>
             </div>
         </form>
+          <h1 style="font-size: 24px; font-color: black;">{{ titles }}</h1>
       </div>
     </div>
         <br><br>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+          crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).on('submit','#main-form',function(e) {
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:'/',
+        data:{
+          Names:$("#movieName").val()
+        },
+      })
+    });
+  </script>
+    </header>
+        <h1 style="font-size: 24px; font-color: black;">{{ titles }}</h1>
+
 </body>
 </html>

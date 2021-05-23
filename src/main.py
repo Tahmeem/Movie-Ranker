@@ -4,16 +4,15 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def form_post():
-    count = 1
+    moviePresent = 0
     if request.method == 'GET':
-        return render_template('index.html', addAgain="added title", count = count)
+        return render_template('index.html', movies = moviePresent)
     elif request.method == 'POST':
-        addAnotherField = request.form['add']
-        if addAnotherField == "added title":
-            count += 1
-            return render_template('index.html', addAgain=addAnotherField, count = count)
-        else:
-            return render_template('index.html',addAgain=addAnotherField, count=0)
+        movieTitles = request.form.get('Names')
+        print(movieTitles)
+        moviePresent += 1
+        print(moviePresent)
+        return render_template('index.html', movies=moviePresent, titles=movieTitles)
 
 if __name__ == "__main__":
     app.run(debug=True)
