@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import DataWork
 app = Flask(__name__)
 
 
@@ -6,13 +7,13 @@ app = Flask(__name__)
 def form_post():
     moviePresent = 0
     if request.method == 'GET':
-        return render_template('index.html', movies=moviePresent, titles="No Movies")
+        return render_template('index.html', movies=moviePresent)
     elif request.method == 'POST':
         movieTitles = request.form.getlist('movieName')
-        print(type(movieTitles))
+        movieDetails = DataWork.storeData(movieTitles)
         moviePresent += 1
-        print(moviePresent)
-        return render_template('index.html', movies=moviePresent, titles=movieTitles)
+        movieDetails = DataWork.printOrder(movieDetails[0],movieDetails[1])
+        return render_template('index.html', movies=moviePresent, titles=movieDetails)
 
 if __name__ == "__main__":
     app.run(debug=True)

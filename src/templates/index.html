@@ -71,7 +71,7 @@
     </header>
     {% if movies != 0 %}
         {% for movie in titles %}
-            <h1 style="font-size: 24px; font-color: black;">{{ movie }}</h1>
+            <h3>{{ movie }} {{titles[movie]}}</h3>
         {% endfor %}
     {% endif %}
 </body>
