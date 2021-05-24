@@ -34,7 +34,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="https://www.imdb.com/" target="_blank">IMDb</a>
               </li>
-                <li class="nav-item">
+              <li class="nav-item">
+                <a class="nav-link" href="https://imdbpy.readthedocs.io/en/latest/" target="_blank">IMDbPY</a>
+              </li>
+              <li class="nav-item">
                 <a class="Login nav-link" href="#">Sign in</a>
               </li>
                 <li class="nav-item">
@@ -70,9 +73,23 @@
     <script src="{{url_for('static', filename='index.js')}}"></script>
     </header>
     {% if movies != 0 %}
+    <table class = "table-styling">
+        <thead>
+                 <tr>
+                    <th>Movie</th>
+                    <th>Rating</th>
+                </tr>
+        </thead>
+        <tbody>
         {% for movie in titles %}
-            <h3>{{ movie }} {{titles[movie]}}</h3>
+            <tr>
+                <td>{{ movie }} </td>
+
+                <td>{{titles[movie]}}</td>
+            </tr>
         {% endfor %}
+        </tbody>
+        </table>
     {% endif %}
 </body>
 </html>
