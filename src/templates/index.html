@@ -73,10 +73,14 @@
     <script src="{{url_for('static', filename='index.js')}}"></script>
     </header>
     {% if movies != 0 %}
-    <table class = "table-styling">
+    <div class = "table-styling">
+    <table class = "styled-table">
         <thead>
                  <tr>
                     <th>Movie</th>
+                     <th>Directors</th>
+                     <th>Genres</th>
+                     <th>Plot</th>
                     <th>Rating</th>
                 </tr>
         </thead>
@@ -84,12 +88,15 @@
         {% for movie in titles %}
             <tr>
                 <td>{{ movie }} </td>
-
-                <td>{{titles[movie]}}</td>
+                <td class = "directors">{{' '.join(titles[movie][1])}}</td>
+                <td>{{' '.join(titles[movie][2])}}</td>
+                <td>{{titles[movie][3]}}</td>
+                <td>{{titles[movie][0]}}</td>
             </tr>
         {% endfor %}
         </tbody>
         </table>
+    </div>
     {% endif %}
 </body>
 </html>

@@ -11,22 +11,35 @@ def inputMovies():
 def storeData(MovieNames):
     ratings = []
     movieDict = {}
+    directorDict = {}
+    genreDict = {}
+    storyLineDict = {}
     for i in MovieNames:
         movie = ia.search_movie(i)
         movie = movie[0].movieID
         curr_movie = ia.get_movie(movie)
         movieDict[i] = curr_movie.data['rating']
         ratings.append(curr_movie.data['rating'])
-    return ratings,movieDict
+        directors = []
+        genres = []
+        for genre in curr_movie['genres']:
+            genres.append(genre)
+        genreDict[i] = genres
+        for director in curr_movie['director']:
+            directors.append(director['name'])
+        directorDict[i] = directors
+        storyLineDict[i] = curr_movie.get('plot outline')
+    return ratings,movieDict,directorDict,genreDict,storyLineDict
 
-def printOrder(ratings, movieDict):
+def printOrder(ratings, movieDict,directorDict,genreDict,storyLineDict):
     ratings.reverse()
     sortRanking(ratings, 0, len(ratings)-1)
     newMovieDict = {}
     for rating in ratings:
         for movieName in movieDict:
             if movieDict[movieName] == rating:
-                newMovieDict[movieName] = rating
+                newArr = [rating,directorDict[movieName],genreDict[movieName],storyLineDict[movieName]]
+                newMovieDict[movieName] = newArr
     return newMovieDict
 
 def partition(arr, left, right):
