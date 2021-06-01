@@ -14,6 +14,7 @@ pip install Flask
 # Using Movie Ranker
 
 Clone this repo and run the code on a python IDE
+
 After running the code, open a browser of your choice and go to localhost:5000
 Here you will see this page which is the main page.
 
