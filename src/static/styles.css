@@ -35,7 +35,7 @@ a.Sign-in:hover{
 
 .input-style{
     position: relative;
-    margin-left:30%;
+    margin-left:25%;
 }
 .input-style::placeholder{
     text-align: center;
@@ -43,7 +43,7 @@ a.Sign-in:hover{
 
 .btn-container{
     display:flex;
-    margin-left: 28%;
+    justify-content: center;
 }
 
 .btn-styling1{
